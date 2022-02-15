@@ -38,10 +38,14 @@ const PatientSchema = new mongoose.Schema(
             type:String,
             trim:true,
         },
+        sex:{
+            type:String,
+            trim:true
+        },
         registro:{
             type:Date,
             default:Date.now(),
-        }
+        },
     }
 )
 

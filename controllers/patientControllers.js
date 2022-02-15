@@ -1,6 +1,5 @@
 const Patient = require('../models/Patient');
-
-
+const Analisys = require('../models/Analysis');
 
 exports.createPatient = async (req, res) => {
         const { dni } = req.body;
@@ -33,7 +32,8 @@ exports.getPatients = async (req, res) => {
 
 exports.getPatient = async (req , res ) => {
         const patient =  await Patient.findById(req.params.id);
-        res.send(patient)
+        const analysis = await Analisys.find({patientId:req.params.id});
+        res.status(200).send({patient , analysis});
 }
 
 exports.deletePatient = async (req , res) => {
@@ -48,7 +48,7 @@ exports.deletePatient = async (req , res) => {
 
 exports.updatePatient = async (req , res) => {
         try{
-                await Patient.findByIdAndRemove(req.params.id , req.body)
+                await Patient.findByIdAndUpdate(req.params.id , req.body)
                 res.send('Ok')
         }catch(error){
                 console.log(error)
