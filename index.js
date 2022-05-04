@@ -19,7 +19,7 @@ app.use(express.urlencoded({extended: false}));
 
 // routes setup
 app.use('/patients' , require('./routes/patient'));
-app.use('/patients/:id/analisys' , require('./routes/analisys'))        
+app.use('/patients/:id/analysis' , require('./routes/analysis'))        
         
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
